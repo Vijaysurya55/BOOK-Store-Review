@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Reviews</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h1 {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            margin: 10px;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .add-review-button {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .search-container {
+            margin: 20px;
+        }
+
+        #book-name {
+            padding: 5px;
+        }
+
+        #search-button {
+            padding: 5px 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Additional Styles for Enhancement */
+
+        li {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            margin: 20px 10%;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .add-review-button {
+            display: inline-block;
+            margin-top: 20px;
+            background-color: #009688;
+            color: #fff;
+            padding: 15px 30px;
+            text-decoration: none;
+            border: none;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .add-review-button:hover {
+            background-color: #007BFF;
+        }
+
+        .search-container {
+            margin: 40px auto;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        #book-name {
+            padding: 10px;
+            width: 70%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-right: 10px;
+            box-sizing: border-box;
+        }
+
+        #search-button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #search-button:hover {
+            background-color: #005A9E;
+        }
+    </style>
+</head>
+<body>
+    <h1>All Reviews</h1>
+    <ul>
+        {% for review in reviews %}
+            <li>
+                <h2>{{ review.book.title }}</h2>
+                <p>{{ review.review_text }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+    <div class="search-container">
+        <input type="text" id="book-name" placeholder="Search by book name">
+        <button id="search-button">Search</button>
+    </div>
+    <a class="add-review-button" href="{% url 'add_review' %}">Add a Review</a>
+</body>
+</html>

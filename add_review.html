@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Review</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h1 {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 20px 0;
+            margin: 0;
+        }
+
+        form {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            margin: 20px auto;
+            padding: 30px;
+            width: 70%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin: 15px 0 5px;
+            text-align: left;
+        }
+
+        input[type="text"],
+        textarea {
+            width: calc(100% - 22px);
+            padding: 12px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 12px 24px;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #005A9E;
+        }
+
+        a {
+            display: block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #005A9E;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add a Review</h1>
+    <form method="post" action="{% url 'add_review' %}">
+        {% csrf_token %}
+        <label for="book_title">Book Title:</label>
+        <input type="text" id="book_title" name="book_title" required>
+        <br><br>
+        <label for="review_text">Review:</label>
+        <textarea id="review_text" name="review_text" rows="6" required></textarea>
+        <br><br>
+        <input type="submit" value="Submit Review">
+    </form>
+    <a href="{% url 'display_reviews' %}">Go to all reviews</a>
+</body>
+</html>
